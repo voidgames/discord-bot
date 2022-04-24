@@ -1,0 +1,30 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voidgames/discord-bot.git"
+  },
+  "author": "void",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voidgames/discord-bot/issues"
+  },
+  "homepage": "https://github.com/voidgames/discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "google-spreadsheet": "^3.2.0",
+    "node-cron": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/google-spreadsheet": "^3.2.1",
+    "eslint": "^8.14.0",
+    "prettier": "2.6.2"
+  }
+}
