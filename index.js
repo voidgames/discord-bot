@@ -56,6 +56,8 @@ client.on('messageCreate', async (message) => {
 let reactionDataCache = [];
 
 client.on('messageReactionAdd', async (reaction, user) => {
+	if (reaction.message.guildId !== DISCORD_GUILD_ID) return;
+	if (reaction.message.channelId !== DISCORD_CHANNEL_ID) return;
 	const userId = user.id;
 	const userName = user.username;
 	const emoji = reaction.emoji.name;
@@ -72,6 +74,20 @@ client.on('messageReactionAdd', async (reaction, user) => {
 		});
 	} else {
 		reactionDataCache[targetDataIndex].count++;
+	}
+});
+
+client.on('messageReactionRemove', async (reaction, user) => {
+	if (reaction.message.guildId !== DISCORD_GUILD_ID) return;
+	if (reaction.message.channelId !== DISCORD_CHANNEL_ID) return;
+	const userId = user.id;
+	const emoji = reaction.emoji.name;
+	// キャッシュ内検索
+	const targetDataIndex = reactionDataCache.findIndex(
+		(data) => data.userId === userId && data.emoji === emoji
+	);
+	if (targetDataIndex !== -1) {
+		reactionDataCache[targetDataIndex].count--;
 	}
 });
 
